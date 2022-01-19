@@ -12,6 +12,7 @@ namespace CrawlerControl
         static void Main(string[] args)
         {
             GridWallHandler gridWallHandler = new GridWallHandler();
+            //Invoke Spider Grid program
             gridWallHandler.SpiderGridTraverser();
         }
     }
