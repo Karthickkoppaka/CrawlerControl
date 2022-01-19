@@ -26,7 +26,7 @@ namespace CrawlerControl.BusinessHandlers
         /// For traverse path direction X, Y coordinates will be changed based on direction to move across grid for Forward movement (F)
         /// and
         /// Orientation will be change for L-Left and R-Right instructions
-        /// /// </summary>
+        /// </summary>
         /// <param name="gridParameters">Grid parameter with definition of grid</param>
         /// <returns>Current Position Details with Coordinates and Orientation</returns>
         public Position GetCurrentPosition(GridParameters gridParameters)
