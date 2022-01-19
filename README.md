@@ -1,7 +1,7 @@
 # CrawlerControl
 
 **Requirement:**
-Create a Grid Wall traverser defined with <X, Y> coordinates and Orientation - UP, LEFT, RIGHT and DOWN
+Create a Grid Wall traverser defined with <X, Y> coordinates and Orientation - UP, LEFT, RIGHT and DOWN. Process to accept directions <L-Left, R-Right, F-Forwad> and traverse on grid
 
 **Solution:**
 
