@@ -40,13 +40,22 @@ namespace CrawlerControl.BusinessHandlers
         /// </summary>
         public void SpiderGridTraverser()
         {
-            // Fetch Grid definition, Positional and Traverse pattern
-            ReadInputGridParameters();
-            // Invoke Path traversal to get current position after traversal
-            var currentPosition = gridParameters?.Position !=null ? gridCrawlerProcessor.GetCurrentPosition(gridParameters) : throw new Exception("Unable to process due to invalid input parameters");
-            Console.WriteLine($"Spider position after traversal <X Y Orientation>: {currentPosition.Coordinates.X} {currentPosition.Coordinates.Y} {currentPosition.Orientation}");
-            // Small sleep time to view input on console
-            Thread.Sleep(5000);
+            try
+            {
+                // Fetch Grid definition, Positional and Traverse pattern
+                ReadInputGridParameters();
+                // Invoke Path traversal to get current position after traversal
+                var currentPosition = gridParameters?.Position != null ? gridCrawlerProcessor.GetCurrentPosition(gridParameters) : throw new Exception("Unable to process due to invalid input parameters");
+                Console.WriteLine($"Spider position after traversal <X Y Orientation>: {currentPosition.Coordinates.X} {currentPosition.Coordinates.Y} {currentPosition.Orientation}");
+                // Small sleep time to view output on console
+                Thread.Sleep(5000);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error while processing: {ex.Message}");
+                // Small sleep time to view output on console
+                Thread.Sleep(5000);
+            }
         }
 
         /// <summary>
@@ -80,6 +89,7 @@ namespace CrawlerControl.BusinessHandlers
                 // Enum validation for Orienation
                 gridParameters.Position = input != null && input[0] != null && input[1] != null && input[2] != null && int.TryParse(input[0], out xGridSize) &&
                                              int.TryParse(input[1], out yGridSize) && xGridSize >= 0 && yGridSize >= 0 && 
+                                             xGridSize <= gridParameters.GridSize.X && yGridSize <= gridParameters.GridSize.Y &&
                                              Enum.TryParse(input[2], ignoreCase: true,out currentOrientation) ?
                                              new Position()
                                              {

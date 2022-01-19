@@ -12,7 +12,14 @@ namespace CrawlerControl.BusinessHandlers
     /// </summary>
     public class GridCrawlerProcessor
     {
+        /// <summary>
+        /// Function to reset Orientation 
+        /// </summary>
         private readonly Func<Orientation, Orientation> adjustDirection = (input) => (int)input >= 4 ? input - 4 : (input < 0 ? input + 4 : input);
+        /// <summary>
+        /// Function to check if index out of wall grid
+        /// </summary>
+        private readonly Func<Coordinates, bool> isValidCoordinates = (input) => !(input.X < 0 || input.Y < 0);
 
         /// <summary>
         /// Traversal on grid to get Current position
@@ -58,7 +65,8 @@ namespace CrawlerControl.BusinessHandlers
                     gridParameters.Position.Orientation = adjustDirection(gridParameters.Position.Orientation + 1);
                 }
             }
-            return gridParameters.Position;
+
+            return isValidCoordinates(gridParameters.Position.Coordinates) ? gridParameters.Position : throw new Exception("Moved out of wall");
         }
     }
 }
