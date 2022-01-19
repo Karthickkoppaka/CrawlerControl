@@ -47,5 +47,8 @@ CrawlerControl.csproj
   
   **Test Project Structure:**
   
-    -  GridCrawlerProcessorTests.cs : GetCurrentPositionTest method to test the path traversal functionality
+   - GridCrawlerProcessorTests.cs : GetCurrentPositionTest method to test the path traversal functionality
+ 
+       -  ValidTraversePathTest Method : Traverse with valid traverse path to move within grid wall
+       -  InvalidTraversePathTest Method: To test traverse path to move out of wall grid
 
